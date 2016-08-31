@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="moves" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>שחקנים</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="app/myApp.js"></script>
+</head>
+<body>
+
+
+<section ng-controller="movesController" class="container">
+    <div class="input-group">
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h1> שחקנים </h1></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class=" input-group col-xs-10 col-sm-5 col-md-2 col-lg-2">
+                    <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                    <input ng-model="search" type="text" class="form-control" placeholder="חיפוש">
+                </div>
+
+                <a ng-click="sort('name')" class="btn btn-default input-group col-xs-10 col-sm-5 col-md-2 col-lg-2"
+                   href="#">
+                    <i class="fa {{howToSortButtonClass}} fa-lg"></i> מיין לפי</a>
+
+            </div>
+            <div class="row">
+
+                <div ng-repeat="actor in filteredActors = ( actors | filter:{name:search } )| orderBy:sortBy:howToSort"
+                     class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail">
+                        <img ng-click="addBorderToImg(toggel)" ng-class="{borderRed: toggel}" ng-src="img/{{actor.img}}"
+                             alt="{{actor.name}}">
+                        <div class="caption">
+                            <a href="{{actor.link}}" target="_blank"><p>{{actor.name}}</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="noResult" ng-show="(!filteredActors.length)"><h3> <span>{{search}}</span> אין תוצאות המתאימות לחיפוש שלך  </h3></div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
