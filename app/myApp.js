@@ -11,6 +11,8 @@ myApp.controller('movesController', function ($scope) {
     $scope.howToSortButtonClass = 'fa-sort-alpha-asc';
 
     $scope.sort = function (sortBy) {
+
+        // to sort the actors A-Z or Z-A
         $scope.sortBy = sortBy;
         if ($scope.howToSort === '') {
             $scope.howToSort = false;
@@ -25,6 +27,8 @@ myApp.controller('movesController', function ($scope) {
     };
 
     $scope.addBorderToImg = function (toggel) {
+
+        // add or remove red border by onclick in an img
         this.toggel = (toggel) ? false : true;
     };
 
